@@ -12,7 +12,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     mdx(),
-    sitemap(),
+    // sitemap(), // TODO: Fix sitemap generation issue
     compress(),
   ],
 
