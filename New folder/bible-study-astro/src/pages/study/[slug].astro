@@ -1,0 +1,494 @@
+---
+// src/pages/study/[slug].astro
+// Dynamic route: generates one page per study content file
+// URL: /study/john-15-vine → renders john-15-vine.md
+
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import '../../styles/global.css';
+
+// ── Static path generation (runs at build time) ───────────────
+export async function getStaticPaths() {
+  const studies = await getCollection('studies');
+  return studies.map(study => ({
+    params: { slug: study.slug },
+    props:  { study },
+  }));
+}
+
+// ── Page props ────────────────────────────────────────────────
+const { study } = Astro.props;
+const { data }  = study;
+const { Content } = await render(study);
+
+// ── Accent color map → Tailwind classes ───────────────────────
+const accent = {
+  olive: {
+    border:  'border-olive',
+    bg:      'bg-olive-light',
+    text:    'text-olive',
+    dot:     'bg-olive',
+    topBar:  'border-t-olive',
+    tab:     'bg-olive text-white',
+  },
+  slate: {
+    border:  'border-slate',
+    bg:      'bg-slate-light',
+    text:    'text-slate',
+    dot:     'bg-slate',
+    topBar:  'border-t-slate',
+    tab:     'bg-slate text-white',
+  },
+  terra: {
+    border:  'border-terra',
+    bg:      'bg-terra-light',
+    text:    'text-terra',
+    dot:     'bg-terra',
+    topBar:  'border-t-terra',
+    tab:     'bg-terra text-white',
+  },
+  gold: {
+    border:  'border-gold',
+    bg:      'bg-gold-light',
+    text:    'text-gold',
+    dot:     'bg-gold',
+    topBar:  'border-t-gold',
+    tab:     'bg-gold text-white',
+  },
+}[data.accentColor] ?? {
+  border: 'border-gold', bg: 'bg-gold-light', text: 'text-gold',
+  dot: 'bg-gold', topBar: 'border-t-gold', tab: 'bg-gold text-white',
+};
+
+const crossRefCount = data.crossReferences?.length ?? 0;
+---
+
+<Base
+  title={data.seoTitle ?? `${data.title} | Scripture Depth`}
+  description={data.seoDescription ?? data.subtitle}
+  ogImage={data.ogImage ?? data.heroImage.src}
+  canonicalUrl={`/study/${data.slug}`}
+>
+
+<!-- ══════════════════════════════════════════════════════
+     1. HERO COVER HEADER
+═══════════════════════════════════════════════════════ -->
+<section class="relative min-h-[92vh] flex flex-col justify-end overflow-hidden">
+
+  <!-- Background Image -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src={data.heroImage.src}
+      alt={data.heroImage.alt}
+      class="w-full h-full object-cover img-load"
+      style={`object-position: ${data.heroImage.focalPoint}`}
+      loading="eager"
+    />
+    <!-- Gradient overlay: bottom-heavy for text legibility -->
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/30 to-transparent"></div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-content mx-auto px-6 lg:px-12 pb-16 md:pb-24 w-full">
+
+    <!-- Metadata row -->
+    <div class="flex flex-wrap gap-3 mb-8">
+      <span class="meta-pill">{data.category}</span>
+      <span class="meta-pill">{data.book} {data.chapter}:{data.verses}</span>
+      <span class="meta-pill">{data.readingTime} min read</span>
+      {crossRefCount > 0 && (
+        <span class="meta-pill">{crossRefCount} cross-references</span>
+      )}
+      {data.series && (
+        <span class="meta-pill">Series: {data.series}</span>
+      )}
+    </div>
+
+    <!-- Title — the editorial centrepiece -->
+    <h1 class="font-display text-display-xl text-white text-shadow-editorial text-balance mb-6 max-w-4xl">
+      {data.title}
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="font-sans text-lg md:text-xl text-white/80 text-balance max-w-2xl leading-relaxed mb-8">
+      {data.subtitle}
+    </p>
+
+    <!-- Author + Date -->
+    <div class="flex items-center gap-4">
+      <div class="w-10 h-10 rounded-full bg-white/20 border border-white/30 flex items-center justify-center">
+        <span class="font-display text-white font-bold text-sm">
+          {data.author.split(' ').map((n: string) => n[0]).join('')}
+        </span>
+      </div>
+      <div>
+        <p class="text-caption font-sans text-white/90 font-medium">{data.author}</p>
+        <p class="text-caption font-sans text-white/50">
+          {data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Hero photo credit -->
+  {data.heroImage.credit && (
+    <div class="absolute bottom-4 right-6 z-10">
+      <p class="text-caption text-white/30">{data.heroImage.credit}</p>
+    </div>
+  )}
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     2. SCRIPTURE FOCUS BLOCK
+═══════════════════════════════════════════════════════ -->
+<section class="max-w-content mx-auto px-6 lg:px-12 py-section">
+  <div class={`relative border-l-4 ${accent.border} ${accent.bg} px-8 md:px-12 py-10 md:py-14`}>
+
+    <!-- Decorative large quote mark -->
+    <div class={`absolute top-4 left-6 font-display text-8xl leading-none ${accent.text} opacity-20 select-none pointer-events-none`}
+         aria-hidden="true">"</div>
+
+    <!-- Translation + Reference header -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+      <div>
+        <p class="label-eyebrow mb-1">Scripture Focus</p>
+        <h2 class="font-display text-display-md text-charcoal">
+          {data.scriptureBlock.reference}
+        </h2>
+      </div>
+      <span class={`${accent.text} font-sans text-caption font-semibold uppercase tracking-widest border ${accent.border} px-3 py-1`}>
+        {data.scriptureBlock.translation}
+      </span>
+    </div>
+
+    <!-- Verse block -->
+    <div class="space-y-5">
+      {data.scriptureBlock.verses.map((v: { ref: string; text: string }) => {
+        const isKey = v.ref === data.scriptureBlock.keyVerse;
+        return (
+          <div class={`${isKey ? 'pl-4 border-l-2 border-gold' : ''}`}>
+            {isKey && <p class="label-eyebrow text-gold mb-2">Key Verse</p>}
+            <p class={`font-serif ${isKey ? 'text-xl md:text-2xl text-charcoal' : 'text-body-lg text-ink-muted'} leading-relaxed text-pretty`}>
+              <sup class="verse-num">{v.ref.split(':')[1]}</sup>{v.text}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Closing quote mark -->
+    <div class={`absolute bottom-4 right-8 font-display text-8xl leading-none ${accent.text} opacity-20 select-none pointer-events-none`}
+         aria-hidden="true">"</div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     3. BODY PROSE (from Markdown content)
+═══════════════════════════════════════════════════════ -->
+<section class="max-w-prose mx-auto px-6 lg:px-0 pb-section">
+  <article class="
+    prose prose-lg
+    prose-headings:font-display prose-headings:text-charcoal prose-headings:font-bold
+    prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+    prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+    prose-p:font-sans prose-p:text-ink-muted prose-p:leading-loose
+    prose-strong:text-charcoal prose-strong:font-semibold
+    prose-a:text-gold prose-a:no-underline hover:prose-a:underline
+    prose-blockquote:border-l-gold prose-blockquote:font-serif prose-blockquote:text-xl prose-blockquote:italic
+    max-w-none
+  ">
+    <Content />
+  </article>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PHOTO BREAK (first)
+═══════════════════════════════════════════════════════ -->
+{data.photoBreaks?.[0] && (
+  <section class="max-w-content mx-auto px-6 lg:px-12 pb-section">
+    <figure>
+      <div class="overflow-hidden">
+        <img
+          src={data.photoBreaks[0].src}
+          alt={data.photoBreaks[0].alt}
+          class="w-full h-[55vh] object-cover img-load transition-transform duration-700 hover:scale-105"
+          loading="lazy"
+        />
+      </div>
+      {data.photoBreaks[0].caption && (
+        <figcaption class="photo-caption mt-3">{data.photoBreaks[0].caption}</figcaption>
+      )}
+    </figure>
+  </section>
+)}
+
+
+<!-- ══════════════════════════════════════════════════════
+     4. CONTEXT TABS — 3-Column Grid
+═══════════════════════════════════════════════════════ -->
+<section class="bg-rule/30 py-section">
+  <div class="max-w-content mx-auto px-6 lg:px-12">
+
+    <!-- Section header -->
+    <div class="mb-14">
+      <p class="label-eyebrow mb-3">Deep Study</p>
+      <h2 class="font-display text-display-lg text-charcoal max-w-xl text-balance">
+        Three Lenses on This Passage
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-rule">
+
+      <!-- 4A: Historical Context -->
+      <div class={`context-card ${accent.topBar} bg-parchment`}>
+        <p class="label-eyebrow mb-4">Historical Context</p>
+        <h3 class="font-display text-heading text-charcoal mb-2">{data.historicalContext.heading}</h3>
+        <div class="flex flex-wrap gap-4 mb-6">
+          <span class="text-caption font-sans text-ink-light border-b border-rule pb-1">
+            📅 {data.historicalContext.period}
+          </span>
+          <span class="text-caption font-sans text-ink-light border-b border-rule pb-1">
+            📍 {data.historicalContext.location}
+          </span>
+        </div>
+        <div class="font-sans text-body text-ink-muted leading-loose space-y-4">
+          {data.historicalContext.body.split('\n\n').map((para: string) => (
+            <p set:html={para} />
+          ))}
+        </div>
+
+        <!-- Optional timeline -->
+        {data.historicalContext.timeline && (
+          <div class="mt-8 space-y-3">
+            <p class="label-eyebrow mb-4">Timeline</p>
+            {data.historicalContext.timeline.map((t: { year: string; event: string }) => (
+              <div class="flex gap-4 items-start">
+                <span class={`font-sans text-caption font-semibold ${accent.text} flex-shrink-0 w-20`}>{t.year}</span>
+                <span class="font-sans text-caption text-ink-muted leading-snug">{t.event}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- 4B: Language Insights -->
+      <div class={`context-card ${accent.topBar} bg-parchment`}>
+        <p class="label-eyebrow mb-4">Language & Word Study</p>
+        <h3 class="font-display text-heading text-charcoal mb-6">{data.languageInsights.heading}</h3>
+
+        {data.languageInsights.body && (
+          <p class="font-sans text-body text-ink-muted mb-6 leading-loose">{data.languageInsights.body}</p>
+        )}
+
+        <div class="space-y-6">
+          {data.languageInsights.words.map((w: {
+            word: string;
+            transliteration: string;
+            strongsNumber?: string;
+            definition: string;
+            significance: string;
+          }) => (
+            <div class={`border-l-2 ${accent.border} pl-4`}>
+              <div class="flex items-baseline gap-3 mb-1">
+                <span class="font-serif text-2xl text-charcoal">{w.word}</span>
+                <span class={`font-sans text-caption font-medium italic ${accent.text}`}>{w.transliteration}</span>
+                {w.strongsNumber && (
+                  <span class="font-sans text-caption text-ink-light">{w.strongsNumber}</span>
+                )}
+              </div>
+              <p class="font-sans text-caption font-semibold text-charcoal mb-2">{w.definition}</p>
+              <p class="font-sans text-caption text-ink-muted leading-relaxed">{w.significance}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 4C: Modern Application -->
+      <div class={`context-card ${accent.topBar} bg-parchment`}>
+        <p class="label-eyebrow mb-4">Modern Application</p>
+        <h3 class="font-display text-heading text-charcoal mb-4">{data.modernApplication.heading}</h3>
+
+        {data.modernApplication.intro && (
+          <p class="font-sans text-body text-ink-muted mb-8 leading-loose">{data.modernApplication.intro}</p>
+        )}
+
+        <div class="space-y-8">
+          {data.modernApplication.points.map((pt: {
+            audience: string;
+            heading: string;
+            body: string;
+          }) => (
+            <div>
+              <p class={`font-sans text-caption font-semibold uppercase tracking-widest ${accent.text} mb-1`}>
+                {pt.audience}
+              </p>
+              <h4 class="font-display text-xl text-charcoal mb-3">{pt.heading}</h4>
+              <p class="font-sans text-body text-ink-muted leading-loose">{pt.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PHOTO BREAK (second, asymmetric)
+═══════════════════════════════════════════════════════ -->
+{data.photoBreaks?.[1] && (
+  <section class="py-section">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <div class={`grid md:grid-cols-2 gap-12 items-center ${
+        data.photoBreaks[1].position === 'right' ? '' : 'md:flex-row-reverse'
+      }`}>
+        <figure>
+          <div class="overflow-hidden">
+            <img
+              src={data.photoBreaks[1].src}
+              alt={data.photoBreaks[1].alt}
+              class="w-full h-80 md:h-96 object-cover img-load"
+              loading="lazy"
+            />
+          </div>
+          {data.photoBreaks[1].caption && (
+            <figcaption class="photo-caption mt-3">{data.photoBreaks[1].caption}</figcaption>
+          )}
+        </figure>
+        <!-- Pull quote in the opposite column -->
+        <div class="py-8">
+          <div class={`font-display text-5xl ${accent.text} leading-none mb-4 opacity-40`}>"</div>
+          <p class="font-display text-2xl md:text-3xl text-charcoal italic leading-snug text-balance">
+            {data.scriptureBlock.verses.find((v: { ref: string; text: string }) => v.ref === data.scriptureBlock.keyVerse)?.text}
+          </p>
+          <p class="font-sans text-caption text-ink-light mt-4">{data.scriptureBlock.reference} ({data.scriptureBlock.translation})</p>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+
+<!-- ══════════════════════════════════════════════════════
+     5. SERMON BLUEPRINT
+═══════════════════════════════════════════════════════ -->
+<section class="py-section">
+  <div class="max-w-content mx-auto px-6 lg:px-12">
+    <div class="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
+
+      <!-- Left: label column -->
+      <div class="md:sticky md:top-24">
+        <p class="label-eyebrow mb-4">Sermon Blueprint</p>
+        <h2 class="font-display text-display-md text-charcoal mb-6 text-balance">
+          {data.sermonBlueprint.title}
+        </h2>
+        <div class={`${accent.bg} border ${accent.border} p-6`}>
+          <p class="label-eyebrow mb-2">Big Idea</p>
+          <p class="font-serif text-lg text-charcoal italic leading-relaxed">
+            "{data.sermonBlueprint.bigIdea}"
+          </p>
+        </div>
+        {data.sermonBlueprint.suggestedHymns && (
+          <div class="mt-8">
+            <p class="label-eyebrow mb-3">Suggested Hymns & Songs</p>
+            <ul class="space-y-2">
+              {data.sermonBlueprint.suggestedHymns.map((h: string) => (
+                <li class="font-sans text-caption text-ink-muted flex items-start gap-2">
+                  <span class={`${accent.text} mt-0.5`}>♪</span> {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      <!-- Right: sermon points -->
+      <div>
+        <div class="space-y-0 border-t border-rule">
+          {data.sermonBlueprint.points.map((pt: {
+            heading: string;
+            scripture?: string;
+            subpoints?: string[];
+          }, i: number) => (
+            <div class="sermon-bullet">
+              <span class="sermon-bullet-num">{String(i + 1).padStart(2, '0')}</span>
+              <div class="flex-1 pt-1">
+                <h3 class="font-display text-xl text-charcoal mb-1">{pt.heading}</h3>
+                {pt.scripture && (
+                  <p class={`font-sans text-caption font-semibold uppercase tracking-widest ${accent.text} mb-3`}>
+                    {pt.scripture}
+                  </p>
+                )}
+                {pt.subpoints && (
+                  <ul class="space-y-2">
+                    {pt.subpoints.map((sp: string) => (
+                      <li class="font-sans text-body text-ink-muted flex items-start gap-3">
+                        <span class={`w-1.5 h-1.5 rounded-full ${accent.dot} flex-shrink-0 mt-2.5`}></span>
+                        <span>{sp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Closing call -->
+        <div class={`mt-10 ${accent.bg} border-l-4 ${accent.border} p-8`}>
+          <p class="label-eyebrow mb-3">Closing Call to Action</p>
+          <p class="font-serif text-xl text-charcoal italic leading-relaxed">
+            "{data.sermonBlueprint.closingCall}"
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     6. CROSS-REFERENCES
+═══════════════════════════════════════════════════════ -->
+{data.crossReferences && data.crossReferences.length > 0 && (
+  <section class="border-t border-rule py-section">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <p class="label-eyebrow mb-8">Cross-References ({crossRefCount})</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-rule">
+        {data.crossReferences.map((cr: { ref: string; note?: string }) => (
+          <div class="bg-parchment p-5 flex gap-4 items-start">
+            <span class={`font-sans text-caption font-bold ${accent.text} flex-shrink-0 mt-0.5`}>→</span>
+            <div>
+              <p class="font-display text-lg text-charcoal font-semibold mb-1">{cr.ref}</p>
+              {cr.note && <p class="font-sans text-caption text-ink-muted leading-snug">{cr.note}</p>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+
+<!-- ══════════════════════════════════════════════════════
+     ORNAMENTAL FOOTER DIVIDER
+═══════════════════════════════════════════════════════ -->
+<div class="max-w-prose mx-auto px-6 py-12">
+  <div class="ornament-divider">
+    <span class="ornament-divider-icon">✦</span>
+  </div>
+  <p class="font-sans text-caption text-center text-ink-light">
+    Published {data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+    {data.updatedDate && ` · Updated ${data.updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}`}
+    {data.author && ` · ${data.author}`}
+  </p>
+</div>
+
+</Base>

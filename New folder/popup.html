@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible Study Assistant</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📖 Bible Study</h1>
+      <button id="settings-btn" class="settings-btn">⚙️</button>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="settings-panel hidden">
+      <div class="settings-content">
+        <h3>Settings</h3>
+        <div class="form-group">
+          <label for="api-key">Google Gemini API Key:</label>
+          <input type="password" id="api-key" placeholder="Enter your API key">
+          <button id="save-key-btn">Save API Key</button>
+        </div>
+        <div class="status-message" id="api-status"></div>
+      </div>
+    </div>
+
+    <!-- Main Interface -->
+    <div id="main-panel" class="main-panel">
+      <div class="query-section">
+        <textarea id="user-query" placeholder="Ask a question about the Bible passage..." rows="3"></textarea>
+        <button id="submit-btn" class="submit-btn">Ask Assistant</button>
+      </div>
+
+      <div class="quick-actions">
+        <button class="quick-action-btn" data-action="summarize">Summarize</button>
+        <button class="quick-action-btn" data-action="key-points">Key Points</button>
+        <button class="quick-action-btn" data-action="cross-reference">Cross Reference</button>
+        <button class="quick-action-btn" data-action="context">Context & Meaning</button>
+      </div>
+
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+      </div>
+
+      <div id="response" class="response hidden">
+        <div class="response-content"></div>
+        <button id="close-response-btn" class="close-btn">✕</button>
+      </div>
+
+      <div id="error" class="error hidden">
+        <p id="error-text"></p>
+        <button id="close-error-btn" class="close-btn">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

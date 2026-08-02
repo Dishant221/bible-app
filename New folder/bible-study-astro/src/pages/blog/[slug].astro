@@ -1,0 +1,277 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Section from '../../components/ui/Section.astro';
+import Badge from '../../components/ui/Badge.astro';
+import CTA from '../../components/ui/CTA.astro';
+
+const { slug } = Astro.params;
+
+// Mock blog post data - in production, fetch from content collection
+const blogPosts = {
+  'how-to-study-bible-effectively': {
+    title: 'How to Study the Bible Effectively',
+    description: 'Learn proven methods and techniques for deeper Scripture engagement and understanding.',
+    author: 'John Smith',
+    date: new Date('2026-07-01'),
+    category: 'Study Tips',
+    readingTime: 8,
+    content: `
+## Introduction
+
+Bible study is more than just reading passages. It requires intention, method, and engagement. In this guide, we explore proven techniques that will transform how you approach Scripture.
+
+## The SOAP Method
+
+One of the most effective study methods is SOAP:
+
+### Scripture
+Start by reading the passage carefully. Choose a translation that works for you, but consider reading it in multiple versions to catch nuances.
+
+### Observation
+What stands out to you? Look for:
+- Repeated words or phrases
+- Cultural or historical context
+- The author's intent
+- Connections to other passages
+
+### Application
+How does this passage apply to your life today? What changes do you need to make?
+
+### Prayer
+End by praying through what you've learned. Ask God to help you apply these truths.
+
+## Context is Everything
+
+Understanding the historical and cultural context of Scripture dramatically deepens your comprehension. Who wrote this? When? To whom? Why?
+
+## Make It Personal
+
+Keep a study journal. Write your thoughts, questions, and insights. This helps cement your learning and creates a record of your spiritual journey.
+
+## Conclusion
+
+Effective Bible study is a skill that develops over time. Be patient with yourself and consistent in your practice.
+    `,
+  },
+  'understanding-historical-context': {
+    title: 'Understanding Biblical Historical Context',
+    description: 'Discover how historical background enriches your understanding of Scripture.',
+    author: 'Sarah Johnson',
+    date: new Date('2026-06-28'),
+    category: 'Theology',
+    readingTime: 10,
+    content: `
+## Why Context Matters
+
+The Bible was written in specific historical, cultural, and geographical contexts. Understanding these contexts helps us interpret Scripture more accurately.
+
+## Geography and Culture
+
+The Mediterranean world of the first century was vastly different from our modern context. Understanding Jewish customs, Roman governance, and Greek philosophy helps unlock Scripture's meaning.
+
+## Historical Timeline
+
+Placing events on a timeline provides crucial context. The divided kingdom, the exile, the intertestamental period—these major events shaped biblical literature.
+
+## Application
+
+When studying a passage, ask yourself about the historical moment in which it was written. This transforms your understanding from abstract to concrete.
+    `,
+  },
+};
+
+const post = blogPosts[slug] || {
+  title: 'Post Not Found',
+  description: 'Sorry, this post could not be found.',
+  author: 'Admin',
+  date: new Date(),
+  category: 'Blog',
+  readingTime: 0,
+  content: 'This post is not available.',
+};
+
+const pageTitle = `${post.title} - Bible Study Hub`;
+const pageDescription = post.description;
+
+// Calculate reading time
+const wordCount = post.content.split(/\s+/).length;
+const actualReadingTime = Math.ceil(wordCount / 200);
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <!-- Article Header -->
+  <Section class="bg-gradient-to-b from-purple-50 to-white">
+    <article class="max-w-4xl mx-auto">
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <Badge variant="primary">{post.category}</Badge>
+        <span class="text-gray-600">
+          {post.date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </span>
+        <span class="text-gray-600">•</span>
+        <span class="text-gray-600">{actualReadingTime} min read</span>
+      </div>
+
+      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+        {post.title}
+      </h1>
+
+      <p class="text-2xl text-gray-600 mb-8">
+        {post.description}
+      </p>
+
+      <div class="flex items-center gap-4 pb-8 border-b border-gray-200">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold">
+          {post.author.charAt(0)}
+        </div>
+        <div>
+          <p class="font-semibold text-gray-900">{post.author}</p>
+          <p class="text-gray-600 text-sm">Bible Scholar & Writer</p>
+        </div>
+      </div>
+    </article>
+  </Section>
+
+  <!-- Article Content -->
+  <Section>
+    <article class="max-w-4xl mx-auto prose prose-lg max-w-none">
+      <div class="text-gray-700 leading-relaxed space-y-6">
+        {post.content.split('\n\n').map((paragraph) => (
+          <div set:html={paragraph} />
+        ))}
+      </div>
+    </article>
+  </Section>
+
+  <!-- Share Section -->
+  <Section class="bg-gray-50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Share This Article</h2>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href={`https://twitter.com/intent/tweet?url=https://biblestudyhub.com/blog/${slug}&text=${post.title}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+        >
+          Share on Twitter
+        </a>
+        <a
+          href={`https://www.facebook.com/sharer/sharer.php?u=https://biblestudyhub.com/blog/${slug}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition"
+        >
+          Share on Facebook
+        </a>
+        <button
+          onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied!')"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition"
+        >
+          Copy Link
+        </button>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Related Posts -->
+  <Section>
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Related Articles</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <a
+          href="/blog/how-to-study-bible-effectively"
+          class="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition"
+        >
+          <div class="h-40 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center text-4xl">
+            📚
+          </div>
+          <div class="p-6">
+            <p class="text-sm text-purple-600 font-semibold mb-2">Study Tips</p>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">
+              How to Study the Bible Effectively
+            </h3>
+            <p class="text-gray-600 text-sm">Learn proven methods for deeper Scripture engagement...</p>
+          </div>
+        </a>
+
+        <a
+          href="/blog/understanding-historical-context"
+          class="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition"
+        >
+          <div class="h-40 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center text-4xl">
+            ⏰
+          </div>
+          <div class="p-6">
+            <p class="text-sm text-purple-600 font-semibold mb-2">Theology</p>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">
+              Understanding Biblical Historical Context
+            </h3>
+            <p class="text-gray-600 text-sm">Discover how historical background enriches understanding...</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <CTA
+    title="Ready to Study Scripture Deeper?"
+    description="Use AI-powered insights alongside these study techniques for maximum understanding and spiritual growth."
+    primaryCTA={{ text: 'Download Extension', href: 'https://chrome.google.com/webstore' }}
+    secondaryCTA={{ text: 'Explore More Articles', href: '/blog' }}
+  />
+</MainLayout>
+
+<style is:global>
+  .prose {
+    --tw-prose-headings: #1f2937;
+    --tw-prose-body: #4b5563;
+    --tw-prose-links: #9333ea;
+    --tw-prose-strong: #1f2937;
+  }
+
+  .prose h2 {
+    @apply text-3xl font-bold mt-8 mb-4;
+  }
+
+  .prose h3 {
+    @apply text-2xl font-bold mt-6 mb-3;
+  }
+
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply mb-4 pl-6;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose strong {
+    @apply font-bold;
+  }
+
+  .prose em {
+    @apply italic;
+  }
+
+  .prose code {
+    @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono;
+  }
+
+  .prose pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg mb-4 overflow-x-auto;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-purple-600 pl-4 italic text-gray-600 my-6;
+  }
+</style>

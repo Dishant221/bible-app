@@ -1,29 +1,9 @@
 /* ─── Global Styles ─────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ─── CSS Variables ──────────────────────────────────────────── */
-:root {
-  --color-primary: #9333ea;
-  --color-primary-dark: #7e22ce;
-  --color-secondary: #fbbf24;
-  --color-accent: #1e40af;
-  --color-success: #16a34a;
-  --color-warning: #ea580c;
-  --color-error: #dc2626;
-
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-
-  --transition-fast: 150ms ease-in-out;
-  --transition-base: 300ms ease-in-out;
-  --transition-slow: 500ms ease-in-out;
-}
 
 /* ─── Base Reset ─────────────────────────────────────────────── */
 @layer base {
@@ -64,47 +44,6 @@
     border: none;
     border-top: 1px solid #e2ddd8;
     margin: 4rem 0;
-  }
-
-  /* Focus styles for accessibility */
-  :focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-
-  /* Links */
-  a {
-    transition: color var(--transition-fast);
-  }
-
-  a:hover {
-    color: var(--color-primary-dark);
-  }
-
-  /* Buttons */
-  button, [role='button'] {
-    transition: all var(--transition-fast);
-  }
-
-  button:disabled, [role='button']:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  /* Forms */
-  input, textarea, select {
-    border-radius: 0.5rem;
-    border: 1px solid #e2e8f0;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all var(--transition-fast);
-  }
-
-  input:focus, textarea:focus, select:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
   }
 }
 
@@ -191,49 +130,6 @@
   }
 }
 
-/* ─── Animations ─────────────────────────────────────────────── */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes gradient {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
 /* ─── Utility Layer ──────────────────────────────────────────── */
 @layer utilities {
   .text-balance  { text-wrap: balance; }
@@ -250,60 +146,4 @@
   /* Image fade-in on load (JS progressive enhancement) */
   .img-load { opacity: 0; transition: opacity 0.6s ease; }
   .img-load.loaded { opacity: 1; }
-
-  /* Animation utilities */
-  .animate-fade-in { animation: fadeIn var(--transition-base); }
-  .animate-fade-in-up { animation: fadeInUp var(--transition-base); }
-  .animate-fade-in-down { animation: fadeInDown var(--transition-base); }
-  .animate-slide-in { animation: slideIn var(--transition-base); }
-  .animate-bounce { animation: bounce 1s infinite; }
-
-  /* Shadow utilities */
-  .shadow-sm { box-shadow: var(--shadow-sm); }
-  .shadow-md { box-shadow: var(--shadow-md); }
-  .shadow-lg { box-shadow: var(--shadow-lg); }
-  .shadow-xl { box-shadow: var(--shadow-xl); }
-
-  /* Gradient text */
-  .gradient-text {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Container utilities */
-  .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
-
-  /* Typography utilities */
-  .section-title {
-    font-size: 1.875rem;
-    font-weight: 900;
-    margin-bottom: 1rem;
-    color: #1e293b;
-  }
-
-  /* Accessibility */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-
-  .focus\:not-sr-only:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: inherit;
-    margin: inherit;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
 }
