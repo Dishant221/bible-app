@@ -3,12 +3,12 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
-import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
-
 
 export default defineConfig({
   site: 'https://biblestudyhub.com',
+  output: 'hybrid',
+  adapter: cloudflare(),
 
   integrations: [
     tailwind({
@@ -70,8 +70,4 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
-});
-export default defineConfig({
-  output: 'hybrid',
-  adapter: cloudflare(),
 });
