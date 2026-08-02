@@ -1,25 +1,19 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
 import cloudflare from '@astrojs/cloudflare';
-import { defineConfig } from 'astro/config';
-   import sitemap from '@astrojs/sitemap';
-   import compress from 'astro-compress';
 
 export default defineConfig({
   site: 'https://biblestudyhub.com',
   output: 'hybrid',
-  //adapter: cloudflare(),
-  integrations: [tailwind(), sitemap(), compress()],
+  adapter: cloudflare(),
 
   integrations: [
     tailwind({
       applyBaseStyles: false,
     }),
     mdx(),
-    // sitemap(), // TODO: Fix `sitemap generation issue
     compress(),
   ],
 
@@ -75,7 +69,3 @@ export default defineConfig({
     prefetchAll: true,
   },
 });
-export default defineConfig({
-     output: 'static',
-     integrations: [sitemap(), compress()],  // keep whatever integrations you already had
-   });
