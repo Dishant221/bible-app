@@ -4,6 +4,13 @@ import Section from '../../components/ui/Section.astro';
 import Badge from '../../components/ui/Badge.astro';
 import CTA from '../../components/ui/CTA.astro';
 
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'how-to-study-bible-effectively' } },
+    { params: { slug: 'understanding-historical-context' } },
+  ];
+}
+
 const { slug } = Astro.params;
 
 // Mock blog post data - in production, fetch from content collection
