@@ -1,0 +1,56 @@
+---
+export interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+  target?: string;
+  rel?: string;
+  icon?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  class: className,
+  target,
+  rel,
+  icon,
+  ...rest
+} = Astro.props;
+
+const baseStyles = 'inline-flex items-center justify-center font-bold rounded-lg transition-all duration-300 active:scale-95 cursor-pointer';
+
+const variants = {
+  primary: 'bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:shadow-lg hover:scale-105',
+  secondary: 'bg-gradient-to-r from-yellow-400 to-orange-400 text-purple-900 hover:shadow-lg hover:scale-105',
+  outline: 'border-2 border-purple-600 text-purple-600 hover:bg-purple-50',
+  ghost: 'text-purple-600 hover:bg-purple-50',
+};
+
+const sizes = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
+};
+
+const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className || ''}`;
+
+const content = (
+  <>
+    {icon && <span class="mr-2">{icon}</span>}
+    <slot />
+  </>
+);
+---
+
+{href ? (
+  <a href={href} class={classes} target={target} rel={rel} {...rest}>
+    {content}
+  </a>
+) : (
+  <button class={classes} {...rest}>
+    {content}
+  </button>
+)}

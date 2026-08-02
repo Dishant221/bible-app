@@ -1,0 +1,116 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Badge from '../components/ui/Badge.astro';
+import CTA from '../components/ui/CTA.astro';
+import { FAQ } from '../constants/config';
+
+const pageTitle = 'FAQ - Bible Study Hub';
+const pageDescription = 'Common questions and answers about Bible Study Hub features and pricing.';
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <Section class="bg-gradient-to-b from-purple-50 to-white">
+    <div class="text-center max-w-3xl mx-auto">
+      <Badge variant="primary" icon="❓">Frequently Asked Questions</Badge>
+
+      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mt-6 mb-4">
+        Common Questions
+      </h1>
+
+      <p class="text-xl text-gray-600">
+        Find answers to common questions about Bible Study Hub features, pricing, and usage.
+      </p>
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <Section>
+    <div class="max-w-3xl mx-auto space-y-6">
+      {FAQ.map((item) => (
+        <details class="group border border-gray-200 rounded-2xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 open:border-purple-200 open:bg-purple-50">
+          <summary class="flex justify-between items-center font-semibold text-gray-900 text-lg">
+            {item.question}
+            <span class="text-2xl text-purple-600 group-open:rotate-180 transition-transform duration-300">›</span>
+          </summary>
+          <p class="mt-4 text-gray-600 leading-relaxed text-base">
+            {item.answer}
+          </p>
+        </details>
+      ))}
+
+      <!-- Additional Questions -->
+      <details class="group border border-gray-200 rounded-2xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 open:border-purple-200 open:bg-purple-50">
+        <summary class="flex justify-between items-center font-semibold text-gray-900 text-lg">
+          What Bible translations do you support?
+          <span class="text-2xl text-purple-600 group-open:rotate-180 transition-transform duration-300">›</span>
+        </summary>
+        <p class="mt-4 text-gray-600 leading-relaxed text-base">
+          We support all major English Bible translations including KJV, NKJV, NIV, ESV, NASB, NLT, The Message, and many others. We're constantly adding support for more translations and languages.
+        </p>
+      </details>
+
+      <details class="group border border-gray-200 rounded-2xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 open:border-purple-200 open:bg-purple-50">
+        <summary class="flex justify-between items-center font-semibold text-gray-900 text-lg">
+          Can I use Bible Study Hub on mobile?
+          <span class="text-2xl text-purple-600 group-open:rotate-180 transition-transform duration-300">›</span>
+        </summary>
+        <p class="mt-4 text-gray-600 leading-relaxed text-base">
+          Currently, Bible Study Hub is available as a Chrome extension for desktop browsers. We're developing mobile apps for iOS and Android that will launch later this year.
+        </p>
+      </details>
+
+      <details class="group border border-gray-200 rounded-2xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 open:border-purple-200 open:bg-purple-50">
+        <summary class="flex justify-between items-center font-semibold text-gray-900 text-lg">
+          Is there a refund policy?
+          <span class="text-2xl text-purple-600 group-open:rotate-180 transition-transform duration-300">›</span>
+        </summary>
+        <p class="mt-4 text-gray-600 leading-relaxed text-base">
+          Yes! We offer a 30-day money-back guarantee on all Premium and Pro plans. If you're not satisfied, we'll refund your full payment.
+        </p>
+      </details>
+
+      <details class="group border border-gray-200 rounded-2xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 open:border-purple-200 open:bg-purple-50">
+        <summary class="flex justify-between items-center font-semibold text-gray-900 text-lg">
+          How does the AI generate insights?
+          <span class="text-2xl text-purple-600 group-open:rotate-180 transition-transform duration-300">›</span>
+        </summary>
+        <p class="mt-4 text-gray-600 leading-relaxed text-base">
+          Our AI is trained on a comprehensive database of theological texts, commentaries, and academic biblical scholarship. All insights are cross-referenced and validated by our team of theologians.
+        </p>
+      </details>
+
+      <details class="group border border-gray-200 rounded-2xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 open:border-purple-200 open:bg-purple-50">
+        <summary class="flex justify-between items-center font-semibold text-gray-900 text-lg">
+          Can I cancel my subscription anytime?
+          <span class="text-2xl text-purple-600 group-open:rotate-180 transition-transform duration-300">›</span>
+        </summary>
+        <p class="mt-4 text-gray-600 leading-relaxed text-base">
+          Absolutely! You can cancel your subscription anytime. No questions asked. Your account will remain active until the end of your billing period.
+        </p>
+      </details>
+    </div>
+  </Section>
+
+  <!-- Contact Support -->
+  <Section class="bg-purple-50">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-4xl font-bold mb-6">Didn't find what you're looking for?</h2>
+      <p class="text-xl text-gray-600 mb-8">
+        Our support team is here to help. Reach out to us anytime.
+      </p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition">
+        📧 Contact Support
+      </a>
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <CTA
+    title="Ready to Study Scripture Deeper?"
+    description="Start your Bible study journey with AI-powered insights today."
+    primaryCTA={{ text: 'Download Extension', href: 'https://chrome.google.com/webstore' }}
+    secondaryCTA={{ text: 'View Pricing', href: '/pricing' }}
+  />
+</MainLayout>

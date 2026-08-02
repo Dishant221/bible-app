@@ -1,0 +1,28 @@
+---
+export interface Props {
+  cols?: number;
+  gap?: number;
+  class?: string;
+}
+
+const { cols = 3, gap = 6, class: className } = Astro.props;
+
+const gapClasses = {
+  2: 'gap-2',
+  3: 'gap-3',
+  4: 'gap-4',
+  6: 'gap-6',
+  8: 'gap-8',
+};
+
+const colClasses = {
+  1: 'grid-cols-1',
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-3',
+  4: 'md:grid-cols-4',
+};
+---
+
+<div class={`grid ${colClasses[cols] || `md:grid-cols-${cols}`} ${gapClasses[gap] || `gap-${gap}`} ${className || ''}`}>
+  <slot />
+</div>

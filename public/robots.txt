@@ -1,0 +1,14 @@
+# Allow all bots
+User-agent: *
+Allow: /
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+
+# Disallow admin areas (none for static site)
+Disallow: /admin/
+Disallow: /.env
+
+# Sitemap
+Sitemap: https://biblestudyhub.com/sitemap-index.xml

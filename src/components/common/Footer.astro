@@ -1,0 +1,74 @@
+---
+import { SITE_NAME, FOOTER_LINKS, SOCIAL_LINKS, COMPANY_EMAIL } from '../../constants/config';
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<footer class={`bg-gray-900 text-white py-12 ${className || ''}`}>
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Top Section -->
+    <div class="grid md:grid-cols-4 gap-8 mb-12">
+      <!-- Brand Column -->
+      <div>
+        <div class="text-xl font-bold mb-2 flex items-center gap-2">
+          <span>📖</span>
+          <span>{SITE_NAME}</span>
+        </div>
+        <p class="text-gray-400 text-sm">
+          AI-powered Bible study tool for deeper learning and understanding.
+        </p>
+        <!-- Social Links -->
+        <div class="flex gap-4 mt-4">
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              href={link.href}
+              title={link.label}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-2xl hover:text-purple-400 transition"
+            >
+              {link.icon}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Footer Columns -->
+      {Object.entries(FOOTER_LINKS).map(([title, links]) => (
+        <div>
+          <h3 class="font-bold mb-4">{title}</h3>
+          <ul class="text-gray-400 text-sm space-y-2">
+            {links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="hover:text-white transition"
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm space-y-2">
+      <p>© 2026 {SITE_NAME}. All rights reserved.</p>
+      <p>Made with 📖 for Bible lovers everywhere</p>
+      <p>
+        Questions? Email us at
+        <a href={`mailto:${COMPANY_EMAIL}`} class="text-purple-400 hover:text-purple-300 transition">
+          {COMPANY_EMAIL}
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

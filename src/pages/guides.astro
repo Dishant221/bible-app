@@ -1,0 +1,156 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Badge from '../components/ui/Badge.astro';
+import Grid from '../components/ui/Grid.astro';
+import FeatureCard from '../components/ui/FeatureCard.astro';
+import CTA from '../components/ui/CTA.astro';
+
+const pageTitle = 'Study Guides - Bible Study Hub';
+const pageDescription = 'Comprehensive Bible study guides for books of the Old and New Testament.';
+
+const guides = [
+  {
+    icon: '📖',
+    title: 'Gospel of John',
+    description: 'A verse-by-verse study of the Gospel of John with theological insights and historical context.',
+  },
+  {
+    icon: '✝️',
+    title: 'Romans',
+    description: 'Explore Paul\'s masterpiece of theology with in-depth commentary and application.',
+  },
+  {
+    icon: '❤️',
+    title: '1 John',
+    description: 'Deep dive into John\'s epistle on fellowship, love, and Christian living.',
+  },
+  {
+    icon: '💪',
+    title: 'Ephesians',
+    description: 'Study Paul\'s letter on the church, spiritual gifts, and Christian living.',
+  },
+  {
+    icon: '🙏',
+    title: 'Psalms',
+    description: 'Explore the poetry of prayer, praise, and lament in the Psalms.',
+  },
+  {
+    icon: '🧠',
+    title: 'Proverbs',
+    description: 'Wisdom literature for Christian living and decision-making.',
+  },
+];
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <Section class="bg-gradient-to-b from-purple-50 to-white">
+    <div class="text-center max-w-3xl mx-auto">
+      <Badge variant="primary" icon="📚">Bible Study Guides</Badge>
+
+      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mt-6 mb-4">
+        Comprehensive Study Guides
+      </h1>
+
+      <p class="text-xl text-gray-600">
+        Verse-by-verse study guides for every book of the Bible with commentary, insights, and discussion questions.
+      </p>
+    </div>
+  </Section>
+
+  <!-- Guides Grid -->
+  <Section>
+    <Grid cols={3}>
+      {guides.map((guide) => (
+        <FeatureCard
+          icon={guide.icon}
+          title={guide.title}
+          description={guide.description}
+        />
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- How It Works -->
+  <Section class="bg-gray-50">
+    <h2 class="text-4xl font-bold text-center mb-12">How Our Guides Work</h2>
+
+    <Grid cols={3}>
+      <div class="bg-white rounded-2xl p-8 border border-gray-200">
+        <div class="text-5xl mb-4">1️⃣</div>
+        <h3 class="text-xl font-bold mb-3">Select a Book</h3>
+        <p class="text-gray-600">
+          Choose a book of the Bible you want to study in depth.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-8 border border-gray-200">
+        <div class="text-5xl mb-4">2️⃣</div>
+        <h3 class="text-xl font-bold mb-3">Study the Text</h3>
+        <p class="text-gray-600">
+          Read verse-by-verse with AI insights, commentary, and cross-references.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-8 border border-gray-200">
+        <div class="text-5xl mb-4">3️⃣</div>
+        <h3 class="text-xl font-bold mb-3">Apply & Grow</h3>
+        <p class="text-gray-600">
+          Reflect on application questions and grow spiritually.
+        </p>
+      </div>
+    </Grid>
+  </Section>
+
+  <!-- Features of Guides -->
+  <Section>
+    <h2 class="text-4xl font-bold text-center mb-12">What's Included in Each Guide</h2>
+
+    <Grid cols={2}>
+      <FeatureCard
+        icon="📝"
+        title="Detailed Commentary"
+        description="In-depth explanations of the text, cultural context, and historical background."
+      />
+
+      <FeatureCard
+        icon="🔗"
+        title="Cross-References"
+        description="Find related passages throughout Scripture that connect and reinforce key themes."
+      />
+
+      <FeatureCard
+        icon="💭"
+        title="Discussion Questions"
+        description="Thought-provoking questions for personal reflection or group study."
+      />
+
+      <FeatureCard
+        icon="🎯"
+        title="Application Points"
+        description="Practical ways to apply biblical truths to your daily life."
+      />
+
+      <FeatureCard
+        icon="📊"
+        title="Overview & Maps"
+        description="Visual aids including timelines, maps, and structural outlines."
+      />
+
+      <FeatureCard
+        icon="🤖"
+        title="AI Insights"
+        description="Advanced analysis and theological commentary powered by our AI system."
+      />
+    </Grid>
+  </Section>
+
+  <!-- CTA Section -->
+  <CTA
+    title="Start Learning Bible Guides Today"
+    description="Access comprehensive study guides with AI-powered insights and scholarly commentary."
+    primaryCTA={{ text: 'Download Extension', href: 'https://chrome.google.com/webstore' }}
+    secondaryCTA={{ text: 'View Features', href: '/features' }}
+  />
+</MainLayout>

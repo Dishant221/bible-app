@@ -1,0 +1,56 @@
+---
+import Button from './Button.astro';
+
+export interface Props {
+  name: string;
+  price: string | number;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+  cta: {
+    text: string;
+    href: string;
+  };
+}
+
+const { name, price, description, features, highlighted = false, cta } = Astro.props;
+---
+
+<div class={`rounded-2xl border-2 p-8 transition-all duration-300 ${
+  highlighted
+    ? 'border-purple-600 bg-gradient-to-br from-purple-50 to-white shadow-xl scale-105'
+    : 'border-gray-200 bg-white hover:shadow-lg'
+}`}>
+  {highlighted && (
+    <div class="inline-block mb-4 px-4 py-1 bg-purple-600 text-white text-sm font-bold rounded-full">
+      Most Popular
+    </div>
+  )}
+
+  <h3 class="text-2xl font-bold text-gray-900 mb-2">{name}</h3>
+  <p class="text-gray-600 text-sm mb-6">{description}</p>
+
+  <div class="mb-6">
+    <span class="text-5xl font-black text-gray-900">
+      {typeof price === 'string' ? price : `$${price}`}
+    </span>
+  </div>
+
+  <div class="mb-8">
+    <Button href={cta.href} variant={highlighted ? 'primary' : 'outline'} size="lg" class="w-full justify-center">
+      {cta.text}
+    </Button>
+  </div>
+
+  <div class="border-t border-gray-200 pt-8">
+    <p class="text-sm font-semibold text-gray-900 mb-4">Includes:</p>
+    <ul class="space-y-3">
+      {features.map((feature) => (
+        <li class="flex items-start gap-3">
+          <span class="text-purple-600 font-bold mt-0.5">✓</span>
+          <span class="text-gray-700">{feature}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

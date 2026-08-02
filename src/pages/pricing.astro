@@ -1,0 +1,144 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Grid from '../components/ui/Grid.astro';
+import PricingCard from '../components/ui/PricingCard.astro';
+import CTA from '../components/ui/CTA.astro';
+import Badge from '../components/ui/Badge.astro';
+import { PRICING_PLANS, FAQ } from '../constants/config';
+
+const pageTitle = 'Pricing - Bible Study Hub';
+const pageDescription = 'Choose the perfect plan for your Bible study needs. Free forever or upgrade to Pro.';
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <Section class="bg-gradient-to-b from-purple-50 to-white">
+    <div class="text-center max-w-3xl mx-auto">
+      <Badge variant="primary" icon="💰">Simple Transparent Pricing</Badge>
+
+      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mt-6 mb-4">
+        Choose Your Plan
+      </h1>
+
+      <p class="text-xl text-gray-600">
+        Start free and upgrade anytime. All plans include our core features to help you study Scripture deeper.
+      </p>
+    </div>
+  </Section>
+
+  <!-- Pricing Cards -->
+  <Section>
+    <Grid cols={3}>
+      {PRICING_PLANS.map((plan) => (
+        <PricingCard
+          name={plan.name}
+          price={plan.price}
+          description={plan.description}
+          features={plan.features}
+          highlighted={plan.highlighted}
+          cta={plan.cta}
+        />
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- Comparison Table -->
+  <Section class="bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">Feature Comparison</h2>
+
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-lg overflow-hidden shadow">
+          <thead class="bg-gray-900 text-white">
+            <tr>
+              <th class="px-6 py-4 text-left font-bold">Feature</th>
+              <th class="px-6 py-4 text-center font-bold">Free</th>
+              <th class="px-6 py-4 text-center font-bold">Pro</th>
+              <th class="px-6 py-4 text-center font-bold">Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-semibold">Passage Lookup</td>
+              <td class="px-6 py-4 text-center">✓</td>
+              <td class="px-6 py-4 text-center">✓</td>
+              <td class="px-6 py-4 text-center">✓</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="px-6 py-4 font-semibold">AI Insights</td>
+              <td class="px-6 py-4 text-center">Limited</td>
+              <td class="px-6 py-4 text-center">✓</td>
+              <td class="px-6 py-4 text-center">✓</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-semibold">Commentary Access</td>
+              <td class="px-6 py-4 text-center">Basic</td>
+              <td class="px-6 py-4 text-center">Full</td>
+              <td class="px-6 py-4 text-center">Full</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="px-6 py-4 font-semibold">Custom Study Plans</td>
+              <td class="px-6 py-4 text-center">—</td>
+              <td class="px-6 py-4 text-center">✓</td>
+              <td class="px-6 py-4 text-center">✓</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-semibold">Notes & Highlights</td>
+              <td class="px-6 py-4 text-center">✓</td>
+              <td class="px-6 py-4 text-center">Unlimited</td>
+              <td class="px-6 py-4 text-center">Unlimited</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="px-6 py-4 font-semibold">Offline Access</td>
+              <td class="px-6 py-4 text-center">—</td>
+              <td class="px-6 py-4 text-center">✓</td>
+              <td class="px-6 py-4 text-center">✓</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-6 py-4 font-semibold">Master Classes</td>
+              <td class="px-6 py-4 text-center">—</td>
+              <td class="px-6 py-4 text-center">—</td>
+              <td class="px-6 py-4 text-center">✓</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="px-6 py-4 font-semibold">Priority Support</td>
+              <td class="px-6 py-4 text-center">Community</td>
+              <td class="px-6 py-4 text-center">Email</td>
+              <td class="px-6 py-4 text-center">24/7 Phone</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <Section>
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+
+      <div class="space-y-6">
+        {FAQ.map((item) => (
+          <details class="group border border-gray-200 rounded-lg p-6 cursor-pointer hover:shadow-lg transition">
+            <summary class="flex justify-between items-center font-semibold text-gray-900">
+              {item.question}
+              <span class="text-2xl group-open:rotate-180 transition-transform">›</span>
+            </summary>
+            <p class="mt-4 text-gray-600 leading-relaxed">
+              {item.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <CTA
+    title="Ready to Upgrade Your Bible Study?"
+    description="Join thousands of Bible scholars and students studying Scripture deeper with AI-powered insights."
+    primaryCTA={{ text: 'Start Free Trial', href: 'https://chrome.google.com/webstore' }}
+    secondaryCTA={{ text: 'Learn More', href: '/features' }}
+  />
+</MainLayout>

@@ -1,0 +1,99 @@
+---
+import Button from '../ui/Button.astro';
+import { NAV_LINKS, SITE_NAME } from '../../constants/config';
+
+export interface Props {
+  sticky?: boolean;
+}
+
+const { sticky = true } = Astro.props;
+---
+
+<header class={`${sticky ? 'sticky top-0 z-50' : ''} bg-white shadow-sm`}>
+  <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="/" class="text-2xl font-bold text-purple-600 flex items-center gap-2 hover:opacity-80 transition">
+      📖 <span class="hidden sm:inline">{SITE_NAME}</span>
+    </a>
+
+    <!-- Navigation Links -->
+    <ul class="hidden md:flex gap-8 items-center">
+      {NAV_LINKS.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="hover:text-purple-600 transition font-medium text-gray-700"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Download Button -->
+    <Button
+      href="https://chrome.google.com/webstore"
+      target="_blank"
+      rel="noopener noreferrer"
+      variant="secondary"
+      size="sm"
+      icon="📥"
+      class="hidden md:inline-flex"
+    >
+      Download
+    </Button>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-2xl text-gray-700 hover:text-purple-600 transition"
+      aria-label="Toggle menu"
+    >
+      ☰
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden bg-white border-t border-gray-200 px-4 py-4 space-y-4"
+  >
+    {NAV_LINKS.map((link) => (
+      <a
+        href={link.href}
+        class="block py-2 text-gray-700 hover:text-purple-600 transition font-medium"
+      >
+        {link.label}
+      </a>
+    ))}
+    <Button
+      href="https://chrome.google.com/webstore"
+      target="_blank"
+      rel="noopener noreferrer"
+      variant="secondary"
+      size="sm"
+      icon="📥"
+      class="w-full justify-center"
+    >
+      Download Extension
+    </Button>
+  </div>
+</header>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when clicking on a link
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+</script>

@@ -1,0 +1,92 @@
+---
+// src/pages/study/index.astro
+// The studies archive — magazine-style grid listing
+
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import '../../styles/global.css';
+
+const allStudies = await getCollection('studies');
+// Sort newest first
+const studies = allStudies.sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const accentTextMap: Record<string, string> = {
+  olive: 'text-olive',
+  slate: 'text-slate',
+  terra: 'text-terra',
+  gold:  'text-gold',
+};
+---
+
+<Base
+  title="All Bible Studies | Scripture Depth"
+  description="Browse our full library of premium, in-depth Bible studies covering the Old and New Testaments."
+  canonicalUrl="/study"
+>
+
+  <!-- Archive Header -->
+  <header class="pt-32 pb-20 max-w-content mx-auto px-6 lg:px-12">
+    <p class="label-eyebrow mb-4">Scripture Depth</p>
+    <h1 class="font-display text-display-lg text-charcoal text-balance mb-6 max-w-2xl">
+      All Studies
+    </h1>
+    <p class="font-sans text-body-lg text-ink-muted max-w-prose leading-relaxed">
+      Every study is written to reward both the first-time reader and the seasoned expositor —
+      with original language insights, historical context, and a complete sermon outline.
+    </p>
+  </header>
+
+  <hr class="max-w-content mx-auto px-6 lg:px-12 border-rule" />
+
+  <!-- Study Grid -->
+  <section class="max-w-content mx-auto px-6 lg:px-12 py-section">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-rule">
+      {studies.map(study => {
+        const d = study.data;
+        const accentText = accentTextMap[d.accentColor] ?? 'text-gold';
+        return (
+          <article class="bg-parchment group">
+            <a href={`/study/${study.slug}`} class="block">
+              <!-- Image -->
+              <div class="overflow-hidden h-56">
+                <img
+                  src={d.heroImage.src}
+                  alt={d.heroImage.alt}
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 img-load"
+                  loading="lazy"
+                />
+              </div>
+              <!-- Card content -->
+              <div class="p-7">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class={`font-sans text-caption font-semibold uppercase tracking-widest ${accentText}`}>
+                    {d.category}
+                  </span>
+                  <span class="text-rule">·</span>
+                  <span class="font-sans text-caption text-ink-light">{d.readingTime} min</span>
+                </div>
+                <h2 class="font-display text-heading text-charcoal mb-3 text-balance group-hover:text-gold transition-colors">
+                  {d.title}
+                </h2>
+                <p class="font-sans text-caption text-ink-muted leading-relaxed line-clamp-3 mb-5">
+                  {d.subtitle}
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="font-sans text-caption text-ink-light">
+                    {d.book} {d.chapter}:{d.verses}
+                  </span>
+                  <span class={`font-sans text-caption font-semibold ${accentText} flex items-center gap-1 group-hover:gap-2 transition-all`}>
+                    Read →
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+</Base>

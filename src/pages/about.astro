@@ -1,0 +1,160 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Card from '../components/ui/Card.astro';
+import Grid from '../components/ui/Grid.astro';
+import CTA from '../components/ui/CTA.astro';
+import Badge from '../components/ui/Badge.astro';
+
+const pageTitle = 'About Us - Bible Study Hub';
+const pageDescription = 'Learn about our mission to revolutionize Bible study with AI-powered insights.';
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <Section class="bg-gradient-to-b from-purple-50 to-white">
+    <div class="text-center max-w-3xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+        About Bible Study Hub
+      </h1>
+
+      <p class="text-xl text-gray-600">
+        We're on a mission to make Bible study accessible, engaging, and intellectually rigorous for everyone.
+      </p>
+    </div>
+  </Section>
+
+  <!-- Mission Section -->
+  <Section>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <Badge variant="primary" icon="🎯">Our Mission</Badge>
+        <h2 class="text-4xl font-bold text-gray-900 mt-4 mb-6">
+          Deepen Scripture Understanding with AI
+        </h2>
+        <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+          Bible Study Hub was founded to bridge the gap between ancient wisdom and modern technology. We believe that everyone deserves access to high-quality theological insights and study resources.
+        </p>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Our AI-powered platform combines scholarly research, theological expertise, and cutting-edge technology to help you understand Scripture at a deeper level.
+        </p>
+      </div>
+      <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl p-12 h-full flex items-center justify-center">
+        <div class="text-7xl">📚</div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Values Section -->
+  <Section class="bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">Our Core Values</h2>
+
+      <Grid cols={3}>
+        <Card>
+          <div class="text-5xl mb-4">🙏</div>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900">Reverence</h3>
+          <p class="text-gray-600">We approach Scripture with respect, humility, and scholarly rigor.</p>
+        </Card>
+
+        <Card>
+          <div class="text-5xl mb-4">🤝</div>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900">Accessibility</h3>
+          <p class="text-gray-600">Quality Bible study should be free and available to everyone, everywhere.</p>
+        </Card>
+
+        <Card>
+          <div class="text-5xl mb-4">🔍</div>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900">Excellence</h3>
+          <p class="text-gray-600">We provide accurate, thoughtful, and deeply researched theological content.</p>
+        </Card>
+
+        <Card>
+          <div class="text-5xl mb-4">🌍</div>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900">Inclusivity</h3>
+          <p class="text-gray-600">We serve Bible lovers from every tradition, denomination, and background.</p>
+        </Card>
+
+        <Card>
+          <div class="text-5xl mb-4">💡</div>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900">Innovation</h3>
+          <p class="text-gray-600">We embrace technology to enhance, not replace, traditional study methods.</p>
+        </Card>
+
+        <Card>
+          <div class="text-5xl mb-4">📖</div>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900">Authenticity</h3>
+          <p class="text-gray-600">We're transparent about our methods, sources, and theological perspectives.</p>
+        </Card>
+      </Grid>
+    </div>
+  </Section>
+
+  <!-- Team Section -->
+  <Section>
+    <div class="max-w-4xl mx-auto text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4">Our Team</h2>
+      <p class="text-xl text-gray-600">
+        Founded by theologians, developers, and Bible enthusiasts who share a passion for Scripture.
+      </p>
+    </div>
+
+    <Grid cols={3}>
+      <Card class="text-center">
+        <div class="text-6xl mb-4">👨‍💼</div>
+        <h3 class="text-xl font-bold mb-2">John Smith</h3>
+        <p class="text-purple-600 font-semibold mb-3">Founder & Theologian</p>
+        <p class="text-gray-600 text-sm">PhD in Biblical Studies, 20+ years teaching Scripture</p>
+      </Card>
+
+      <Card class="text-center">
+        <div class="text-6xl mb-4">👩‍💻</div>
+        <h3 class="text-xl font-bold mb-2">Sarah Johnson</h3>
+        <p class="text-purple-600 font-semibold mb-3">CTO & AI Researcher</p>
+        <p class="text-gray-600 text-sm">ML expert, specializing in NLP and theological AI</p>
+      </Card>
+
+      <Card class="text-center">
+        <div class="text-6xl mb-4">👨‍🎓</div>
+        <h3 class="text-xl font-bold mb-2">Michael Chen</h3>
+        <p class="text-purple-600 font-semibold mb-3">Content Director</p>
+        <p class="text-gray-600 text-sm">Theologian and biblical scholar with multilingual expertise</p>
+      </Card>
+    </Grid>
+  </Section>
+
+  <!-- Impact Section -->
+  <Section class="bg-purple-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">Our Impact</h2>
+
+      <Grid cols={3}>
+        <div class="text-center">
+          <div class="text-5xl font-black text-purple-600 mb-4">500K+</div>
+          <p class="text-xl font-semibold text-gray-900 mb-2">Users Worldwide</p>
+          <p class="text-gray-600">Bible lovers and scholars in 150+ countries</p>
+        </div>
+
+        <div class="text-center">
+          <div class="text-5xl font-black text-purple-600 mb-4">50M+</div>
+          <p class="text-xl font-semibold text-gray-900 mb-2">Passages Analyzed</p>
+          <p class="text-gray-600">Using our AI-powered insights tool</p>
+        </div>
+
+        <div class="text-center">
+          <div class="text-5xl font-black text-purple-600 mb-4">4.9★</div>
+          <p class="text-xl font-semibold text-gray-900 mb-2">User Rating</p>
+          <p class="text-gray-600">Consistently praised for quality and accuracy</p>
+        </div>
+      </Grid>
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <CTA
+    title="Join the Bible Study Hub Community"
+    description="Experience a new way to study Scripture with AI-powered insights and scholarly commentary."
+    primaryCTA={{ text: 'Download Extension', href: 'https://chrome.google.com/webstore' }}
+    secondaryCTA={{ text: 'Learn More', href: '/features' }}
+  />
+</MainLayout>

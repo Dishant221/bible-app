@@ -1,0 +1,117 @@
+---
+// src/layouts/Base.astro
+// Root HTML shell — wrap every page in this
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const { title, description, ogImage, canonicalUrl } = Astro.props;
+const siteUrl   = import.meta.env.SITE || 'https://yourdomain.com';
+const resolvedOg = ogImage ? `${siteUrl}${ogImage}` : `${siteUrl}/og-default.jpg`;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image"       content={resolvedOg} />
+  {canonicalUrl && <link rel="canonical" href={`${siteUrl}${canonicalUrl}`} />}
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={resolvedOg} />
+
+  <title>{title}</title>
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- Site-wide Navigation -->
+  <header class="fixed top-0 inset-x-0 z-50 mix-blend-difference">
+    <nav class="max-w-content mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+      <a href="/" class="font-display font-black text-xl text-white tracking-tight">
+        SCRIPTURE&thinsp;DEPTH
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-caption font-sans font-medium uppercase tracking-widest text-white/80">
+        <li><a href="/study"     class="hover:text-white transition-colors">Studies</a></li>
+        <li><a href="/series"    class="hover:text-white transition-colors">Series</a></li>
+        <li><a href="/resources" class="hover:text-white transition-colors">Resources</a></li>
+        <li><a href="/about"     class="hover:text-white transition-colors">About</a></li>
+      </ul>
+      <!-- Mobile hamburger placeholder -->
+      <button class="md:hidden text-white" aria-label="Open menu">
+        <svg width="22" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="0" y1="2"  x2="22" y2="2"/>
+          <line x1="0" y1="8"  x2="22" y2="8"/>
+          <line x1="0" y1="14" x2="22" y2="14"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="bg-ink text-parchment/60 py-16 mt-section">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <p class="font-display font-black text-2xl text-parchment mb-3">SCRIPTURE&thinsp;DEPTH</p>
+          <p class="text-caption font-sans leading-relaxed">
+            Premium theological study resources for modern disciples, pastors, and scholars.
+          </p>
+        </div>
+        <div>
+          <p class="label-eyebrow text-parchment/40 mb-4">Explore</p>
+          <ul class="space-y-2 text-caption font-sans">
+            <li><a href="/study"     class="hover:text-parchment transition-colors">All Studies</a></li>
+            <li><a href="/series"    class="hover:text-parchment transition-colors">Study Series</a></li>
+            <li><a href="/resources" class="hover:text-parchment transition-colors">Free Resources</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="label-eyebrow text-parchment/40 mb-4">About</p>
+          <ul class="space-y-2 text-caption font-sans">
+            <li><a href="/about"    class="hover:text-parchment transition-colors">Our Mission</a></li>
+            <li><a href="/contact"  class="hover:text-parchment transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-parchment/10 pt-8 flex flex-col md:flex-row justify-between gap-4">
+        <p class="text-caption">© {new Date().getFullYear()} Scripture Depth. All rights reserved.</p>
+        <p class="text-caption">Built with <a href="https://astro.build" class="underline hover:text-parchment">Astro</a> & Tailwind CSS</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Progressive image load enhancement -->
+  <script>
+    document.querySelectorAll('img.img-load').forEach(img => {
+      if ((img as HTMLImageElement).complete) {
+        img.classList.add('loaded');
+      } else {
+        img.addEventListener('load', () => img.classList.add('loaded'));
+      }
+    });
+  </script>
+
+</body>
+</html>

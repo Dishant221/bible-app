@@ -1,0 +1,743 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Features - Bible Study Hub Extension">
+  <!-- Hero Section -->
+  <section class="relative min-h-screen bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900 text-white overflow-hidden flex items-center">
+    <!-- Animated background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-400/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+      <div class="absolute top-1/2 left-1/3 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-6xl mx-auto px-4 w-full py-32 text-center">
+      <!-- Badge -->
+      <div class="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/40 transition">
+        <span class="text-sm font-semibold text-blue-100">✨ Complete Feature Overview</span>
+      </div>
+
+      <!-- Main heading -->
+      <h1 class="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white">
+          Powerful
+        </span>
+        <br>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 via-orange-200 to-yellow-200">
+          Features
+        </span>
+      </h1>
+
+      <!-- Subheading -->
+      <p class="text-xl md:text-2xl text-blue-100 mb-4 max-w-2xl mx-auto leading-relaxed">
+        Everything you need for <span class="text-yellow-200 font-bold">deep Bible study</span>
+      </p>
+      <p class="text-lg text-blue-200 max-w-xl mx-auto">
+        Advanced AI-powered tools designed to unlock scripture's deeper meaning
+      </p>
+    </div>
+  </section>
+
+  <!-- Feature Details Section -->
+  <section class="py-32 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl -z-10"></div>
+
+    <div class="max-w-6xl mx-auto px-4 space-y-32">
+      <!-- Feature 1: Summarize -->
+      <div class="group">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Left: Visual Demo -->
+          <div class="relative rounded-2xl overflow-hidden order-2 md:order-1">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-500 opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-blue-50 via-blue-25 to-cyan-50 p-12 rounded-2xl border-2 border-blue-200/50 group-hover:border-blue-300 transition-all duration-500 hover:shadow-2xl">
+              <div class="text-7xl mb-6 inline-block p-4 bg-blue-100 rounded-2xl group-hover:bg-blue-200 transition-colors">📌</div>
+              <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-xl text-sm font-mono space-y-3 group-hover:shadow-lg transition-shadow">
+                <div class="font-bold text-blue-100">User Input:</div>
+                <div class="text-yellow-300">"Summarize John 3:16"</div>
+                <div class="mt-4 pt-4 border-t border-blue-400 flex items-center gap-2">
+                  <span class="animate-pulse">→</span>
+                  <span class="text-blue-100">Processing with AI...</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-blue-400">
+                  <div class="font-bold text-blue-100 mb-2">AI Response:</div>
+                  <div class="text-white leading-relaxed text-xs">
+                    "John 3:16 expresses God's profound love for humanity. It teaches that God gave His only Son so anyone believing in Him..."
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Description -->
+          <div class="order-1 md:order-2">
+            <div class="inline-block px-4 py-2 rounded-full bg-blue-100 border border-blue-200 mb-4">
+              <span class="text-sm font-bold text-blue-700">📌 FEATURE #1</span>
+            </div>
+            <h2 class="text-5xl font-black mb-6 text-gray-900">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600">
+                Instant Summaries
+              </span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+              Get concise, AI-powered summaries of any Bible passage in seconds. Perfect for quick understanding and daily devotions. Our AI extracts the core message while preserving theological accuracy.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="text-blue-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Single or Multiple:</strong> Works with single verses or entire chapters</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-blue-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>AI-Powered:</strong> Concise explanations that respect scripture's depth</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-blue-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Daily Reading:</strong> Perfect for morning devotions and quick study</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-blue-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Beginner-Friendly:</strong> Complex passages simplified without losing meaning</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2: Key Points -->
+      <div class="group">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Left: Description -->
+          <div>
+            <div class="inline-block px-4 py-2 rounded-full bg-emerald-100 border border-emerald-200 mb-4">
+              <span class="text-sm font-bold text-emerald-700">🔑 FEATURE #2</span>
+            </div>
+            <h2 class="text-5xl font-black mb-6 text-gray-900">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
+                Key Points & Themes
+              </span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+              Discover the main theological concepts and important messages hidden in scripture. Our AI identifies the core themes so you understand what God is communicating.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="text-emerald-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Theological Themes:</strong> Extract main theological concepts with accuracy</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-emerald-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Key Messages:</strong> Identify messages and concepts central to scripture</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-emerald-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Author's Intent:</strong> Understand the original author's intent and purpose</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-emerald-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Deep Study:</strong> Perfect for serious, scholarly Bible study</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Visual Demo -->
+          <div class="relative rounded-2xl overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-500 opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-emerald-50 via-emerald-25 to-teal-50 p-12 rounded-2xl border-2 border-emerald-200/50 group-hover:border-emerald-300 transition-all duration-500 hover:shadow-2xl">
+              <div class="text-7xl mb-6 inline-block p-4 bg-emerald-100 rounded-2xl group-hover:bg-emerald-200 transition-colors">🔑</div>
+              <div class="bg-gradient-to-br from-emerald-500 to-emerald-600 text-white p-6 rounded-xl text-sm font-mono space-y-4 group-hover:shadow-lg transition-shadow">
+                <div class="font-bold text-emerald-100">Key Themes Found:</div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-yellow-300">•</span>
+                    <span>Divine Love & Compassion</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-yellow-300">•</span>
+                    <span>Sacrifice & Redemption</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-yellow-300">•</span>
+                    <span>Belief & Faith in Christ</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-yellow-300">•</span>
+                    <span>Eternal Life & Salvation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3: Cross References -->
+      <div class="group">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Left: Visual Demo -->
+          <div class="relative rounded-2xl overflow-hidden order-2 md:order-1">
+            <div class="absolute inset-0 bg-gradient-to-br from-orange-400 to-amber-500 opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-orange-50 via-orange-25 to-amber-50 p-12 rounded-2xl border-2 border-orange-200/50 group-hover:border-orange-300 transition-all duration-500 hover:shadow-2xl">
+              <div class="text-7xl mb-6 inline-block p-4 bg-orange-100 rounded-2xl group-hover:bg-orange-200 transition-colors">🔗</div>
+              <div class="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-6 rounded-xl text-sm font-mono space-y-3 group-hover:shadow-lg transition-shadow">
+                <div class="font-bold text-orange-100">Related Passages Found:</div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-yellow-300">•</span>
+                    <span class="text-white font-bold">John 1:1</span>
+                    <span class="text-orange-100 text-xs ml-auto">The Word divine</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-yellow-300">•</span>
+                    <span class="text-white font-bold">Romans 5:8</span>
+                    <span class="text-orange-100 text-xs ml-auto">God's love proven</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-yellow-300">•</span>
+                    <span class="text-white font-bold">1 John 4:9-10</span>
+                    <span class="text-orange-100 text-xs ml-auto">Love defined</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-yellow-300">•</span>
+                    <span class="text-white font-bold">Ephesians 2:8-9</span>
+                    <span class="text-orange-100 text-xs ml-auto">Grace explained</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Description -->
+          <div class="order-1 md:order-2">
+            <div class="inline-block px-4 py-2 rounded-full bg-orange-100 border border-orange-200 mb-4">
+              <span class="text-sm font-bold text-orange-700">🔗 FEATURE #3</span>
+            </div>
+            <h2 class="text-5xl font-black mb-6 text-gray-900">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-amber-600">
+                Cross References
+              </span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+              Find related passages and connections across the entire Bible. Build a deeper understanding by exploring how different passages relate to each other, creating a tapestry of biblical truth.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="text-orange-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Automatic Discovery:</strong> Find related Bible verses automatically</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Connection Mapping:</strong> See how passages connect and relate</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Comprehensive View:</strong> Build comprehensive understanding of themes</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-orange-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Topical Studies:</strong> Perfect for topical and thematic research</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 4: Historical Context -->
+      <div class="group">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Left: Description -->
+          <div>
+            <div class="inline-block px-4 py-2 rounded-full bg-rose-100 border border-rose-200 mb-4">
+              <span class="text-sm font-bold text-rose-700">📚 FEATURE #4</span>
+            </div>
+            <h2 class="text-5xl font-black mb-6 text-gray-900">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-red-600">
+                Historical & Cultural Context
+              </span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+              Learn the cultural, historical, and theological background of passages. Understand the world in which the passage was written to unlock deeper insight into scripture's meaning.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="text-rose-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Historical Background:</strong> Understand when and why passages were written</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-rose-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Cultural Context:</strong> Learn customs and traditions of biblical times</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-rose-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Theological Significance:</strong> Discover deeper theological implications</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-rose-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Serious Study:</strong> Perfect for scholarly and in-depth research</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Visual Demo -->
+          <div class="relative rounded-2xl overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-rose-400 to-red-500 opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-rose-50 via-rose-25 to-red-50 p-12 rounded-2xl border-2 border-rose-200/50 group-hover:border-rose-300 transition-all duration-500 hover:shadow-2xl">
+              <div class="text-7xl mb-6 inline-block p-4 bg-rose-100 rounded-2xl group-hover:bg-rose-200 transition-colors">📚</div>
+              <div class="bg-gradient-to-br from-rose-500 to-red-600 text-white p-6 rounded-xl text-sm font-mono space-y-3 group-hover:shadow-lg transition-shadow">
+                <div class="font-bold text-rose-100">Historical Context:</div>
+                <div class="space-y-2">
+                  <div class="flex justify-between items-center">
+                    <span class="text-rose-200 font-bold">Time Period:</span>
+                    <span class="text-yellow-300">1st Century AD</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-rose-200 font-bold">Location:</span>
+                    <span class="text-yellow-300">Judea & Galilee</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-rose-200 font-bold">Culture:</span>
+                    <span class="text-yellow-300">Jewish traditions</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-rose-200 font-bold">Theme:</span>
+                    <span class="text-yellow-300">Salvation & Love</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 5: Custom Questions -->
+      <div class="group">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Left: Visual Demo -->
+          <div class="relative rounded-2xl overflow-hidden order-2 md:order-1">
+            <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-400 to-pink-500 opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-fuchsia-50 via-pink-25 to-rose-50 p-12 rounded-2xl border-2 border-fuchsia-200/50 group-hover:border-fuchsia-300 transition-all duration-500 hover:shadow-2xl">
+              <div class="text-7xl mb-6 inline-block p-4 bg-fuchsia-100 rounded-2xl group-hover:bg-fuchsia-200 transition-colors">❓</div>
+              <div class="bg-gradient-to-br from-fuchsia-500 to-pink-600 text-white p-6 rounded-xl text-sm font-mono space-y-3 group-hover:shadow-lg transition-shadow">
+                <div class="font-bold text-fuchsia-100">Your Question:</div>
+                <div class="text-yellow-300 text-base italic">"What does 'born again' mean in John 3?"</div>
+                <div class="mt-4 pt-4 border-t border-fuchsia-400 flex items-center gap-2">
+                  <span class="animate-pulse">→</span>
+                  <span class="text-fuchsia-100">Processing with AI...</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-fuchsia-400">
+                  <div class="font-bold text-fuchsia-100 mb-2">AI Response:</div>
+                  <div class="text-white leading-relaxed text-xs">
+                    "Being 'born again' means spiritual rebirth through faith in Jesus Christ. It's transformation from the old nature to a new life in Christ..."
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Description -->
+          <div class="order-1 md:order-2">
+            <div class="inline-block px-4 py-2 rounded-full bg-fuchsia-100 border border-fuchsia-200 mb-4">
+              <span class="text-sm font-bold text-fuchsia-700">❓ FEATURE #5</span>
+            </div>
+            <h2 class="text-5xl font-black mb-6 text-gray-900">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-600 to-pink-600">
+                Custom Questions
+              </span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+              Ask anything about passages and get AI-powered answers grounded in scripture. Receive personalized learning tailored to your specific interests and spiritual journey.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="text-fuchsia-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Unlimited Questions:</strong> Ask as many questions as you want</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-fuchsia-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Scripture-Based:</strong> All answers grounded in biblical text</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-fuchsia-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Personalized Learning:</strong> Tailored to your interests and goals</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-fuchsia-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Exploration-Friendly:</strong> Perfect for deep spiritual exploration</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 6: Security -->
+      <div class="group">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Left: Description -->
+          <div>
+            <div class="inline-block px-4 py-2 rounded-full bg-indigo-100 border border-indigo-200 mb-4">
+              <span class="text-sm font-bold text-indigo-700">🔐 FEATURE #6</span>
+            </div>
+            <h2 class="text-5xl font-black mb-6 text-gray-900">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">
+                100% Secure & Private
+              </span>
+            </h2>
+            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+              Your study remains completely private. No data collection. Your API key is stored locally only. Complete peace of mind knowing your spiritual journey is protected.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4">
+                <span class="text-indigo-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Local Storage:</strong> API key stored locally on your computer only</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-indigo-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Zero Collection:</strong> No personal data collection whatsoever</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-indigo-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>No Tracking:</strong> No cookies, trackers, or analytics</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-indigo-600 font-bold text-xl mt-1">✓</span>
+                <span class="text-gray-700"><strong>Sacred Privacy:</strong> Your spiritual journey is completely private</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Visual Demo -->
+          <div class="relative rounded-2xl overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-400 to-blue-500 opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-indigo-50 via-indigo-25 to-blue-50 p-12 rounded-2xl border-2 border-indigo-200/50 group-hover:border-indigo-300 transition-all duration-500 hover:shadow-2xl">
+              <div class="text-7xl mb-6 inline-block p-4 bg-indigo-100 rounded-2xl group-hover:bg-indigo-200 transition-colors">🔐</div>
+              <div class="bg-gradient-to-br from-indigo-500 to-blue-600 text-white p-6 rounded-xl text-sm font-mono space-y-2 group-hover:shadow-lg transition-shadow">
+                <div class="font-bold text-indigo-100 mb-3">Security Features:</div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-green-300 font-bold">✓</span>
+                    <span>Local storage only (never sent to servers)</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-green-300 font-bold">✓</span>
+                    <span>End-to-end HTTPS encryption</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-green-300 font-bold">✓</span>
+                    <span>No tracking or analytics</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-green-300 font-bold">✓</span>
+                    <span>Open source & auditable</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-green-300 font-bold">✓</span>
+                    <span>GDPR & privacy compliant</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table Section -->
+  <section class="py-32 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl -z-10"></div>
+
+    <div class="max-w-6xl mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 border border-purple-200 mb-4">
+          <span class="text-sm font-bold text-purple-700">📊 COMPARISON</span>
+        </div>
+        <h2 class="text-5xl md:text-6xl font-black mb-4 text-gray-900">
+          Free vs <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">Premium Features</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Everything you need to start, with premium options when you're ready
+        </p>
+      </div>
+
+      <!-- Responsive Table -->
+      <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-xl">
+        <table class="w-full bg-white">
+          <thead>
+            <tr class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200">
+              <th class="px-6 py-5 text-left font-black text-gray-900">Feature</th>
+              <th class="px-6 py-5 text-center">
+                <div class="inline-block px-4 py-2 rounded-lg bg-blue-100 text-blue-700">
+                  <div class="font-bold text-lg">Free 🎁</div>
+                  <div class="text-xs text-blue-600">Forever</div>
+                </div>
+              </th>
+              <th class="px-6 py-5 text-center">
+                <div class="inline-block px-4 py-2 rounded-lg bg-gradient-to-br from-purple-100 to-indigo-100 text-purple-700">
+                  <div class="font-bold text-lg">Premium ⭐</div>
+                  <div class="text-xs text-purple-600">Recommended</div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b hover:bg-blue-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Summarize Passages</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+            </tr>
+            <tr class="border-b hover:bg-blue-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Key Points & Themes</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+            </tr>
+            <tr class="border-b hover:bg-blue-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Cross References</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+            </tr>
+            <tr class="border-b hover:bg-blue-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Historical Context</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+            </tr>
+            <tr class="border-b hover:bg-blue-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Custom Questions</td>
+              <td class="px-6 py-4 text-center"><span class="inline-block px-3 py-1 bg-green-100 text-green-700 font-bold rounded text-sm">✅ Unlimited</span></td>
+              <td class="px-6 py-4 text-center"><span class="inline-block px-3 py-1 bg-green-100 text-green-700 font-bold rounded text-sm">✅ Unlimited</span></td>
+            </tr>
+            <tr class="border-b hover:bg-purple-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Advanced Analysis</td>
+              <td class="px-6 py-4 text-center text-2xl">❌</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+            </tr>
+            <tr class="border-b hover:bg-purple-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Save & Organize Notes</td>
+              <td class="px-6 py-4 text-center text-2xl">❌</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+            </tr>
+            <tr class="border-b hover:bg-purple-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Verse Highlighting</td>
+              <td class="px-6 py-4 text-center text-2xl">❌</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+            </tr>
+            <tr class="border-b hover:bg-purple-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Commentary Libraries</td>
+              <td class="px-6 py-4 text-center text-2xl">❌</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+            </tr>
+            <tr class="border-b hover:bg-purple-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Study Plans</td>
+              <td class="px-6 py-4 text-center text-2xl">❌</td>
+              <td class="px-6 py-4 text-center"><span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 font-bold rounded text-xs">Coming Soon</span></td>
+            </tr>
+            <tr class="border-b hover:bg-purple-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Priority Support</td>
+              <td class="px-6 py-4 text-center text-2xl">❌</td>
+              <td class="px-6 py-4 text-center text-2xl">✅</td>
+            </tr>
+            <tr class="border-b hover:bg-purple-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Cloud Sync</td>
+              <td class="px-6 py-4 text-center text-2xl">❌</td>
+              <td class="px-6 py-4 text-center"><span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 font-bold rounded text-xs">Coming Soon</span></td>
+            </tr>
+            <tr class="bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-150 transition-colors">
+              <td class="px-6 py-4 font-black text-gray-900 text-lg">Price</td>
+              <td class="px-6 py-4 text-center"><div class="inline-block px-4 py-2 bg-green-100 rounded-lg text-green-700 font-black text-lg">$0/mo</div></td>
+              <td class="px-6 py-4 text-center"><div class="inline-block px-4 py-2 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg text-purple-700 font-black text-lg">₹299/mo</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-32 bg-gradient-to-b from-white via-blue-50/20 to-white relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-100/30 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl -z-10"></div>
+
+    <div class="max-w-4xl mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 border border-purple-200 mb-4">
+          <span class="text-sm font-bold text-purple-700">❓ FAQ</span>
+        </div>
+        <h2 class="text-5xl md:text-6xl font-black mb-4 text-gray-900">
+          Frequently Asked <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">Questions</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Find answers to common questions about Bible Study Hub
+        </p>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <details class="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-purple-300 transition-all duration-300 hover:shadow-lg has-[:checked]:border-purple-500 has-[:checked]:shadow-lg">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+            <span class="font-bold text-lg text-gray-900">How does the extension extract Bible passages?</span>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-600 group-open:bg-purple-600 group-open:text-white transition-all">→</span>
+          </summary>
+          <div class="px-6 pb-6 pt-2 text-gray-700 border-t border-gray-100">
+            <p class="leading-relaxed">
+              The extension uses advanced content extraction technology to identify and extract Bible passages from biblegateway.com. It analyzes the page structure intelligently and extracts the verse text, references, and related content with high accuracy.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-purple-300 transition-all duration-300 hover:shadow-lg has-[:checked]:border-purple-500 has-[:checked]:shadow-lg">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+            <span class="font-bold text-lg text-gray-900">Is my data stored on your servers?</span>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-600 group-open:bg-purple-600 group-open:text-white transition-all">→</span>
+          </summary>
+          <div class="px-6 pb-6 pt-2 text-gray-700 border-t border-gray-100">
+            <p class="leading-relaxed">
+              No! Your data is never stored on our servers. The extension stores your API key locally on your computer. Your Bible passages are only sent to Google's Gemini API for analysis, and nothing is logged or tracked by us.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-purple-300 transition-all duration-300 hover:shadow-lg has-[:checked]:border-purple-500 has-[:checked]:shadow-lg">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+            <span class="font-bold text-lg text-gray-900">What Bible versions does it work with?</span>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-600 group-open:bg-purple-600 group-open:text-white transition-all">→</span>
+          </summary>
+          <div class="px-6 pb-6 pt-2 text-gray-700 border-t border-gray-100">
+            <p class="leading-relaxed">
+              The extension works with all Bible versions available on biblegateway.com, including KJV, NIV, ESV, NRSV, The Message, and many others. It doesn't matter which translation you're reading!
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-purple-300 transition-all duration-300 hover:shadow-lg has-[:checked]:border-purple-500 has-[:checked]:shadow-lg">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+            <span class="font-bold text-lg text-gray-900">How fast are the AI responses?</span>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-600 group-open:bg-purple-600 group-open:text-white transition-all">→</span>
+          </summary>
+          <div class="px-6 pb-6 pt-2 text-gray-700 border-t border-gray-100">
+            <p class="leading-relaxed">
+              Most responses come back in 3-7 seconds. The time depends on how long the passage is and your internet speed. Longer passages or more detailed analysis might take up to 10 seconds.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 5 -->
+        <details class="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-purple-300 transition-all duration-300 hover:shadow-lg has-[:checked]:border-purple-500 has-[:checked]:shadow-lg">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+            <span class="font-bold text-lg text-gray-900">Do I need an API key for the free version?</span>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-600 group-open:bg-purple-600 group-open:text-white transition-all">→</span>
+          </summary>
+          <div class="px-6 pb-6 pt-2 text-gray-700 border-t border-gray-100">
+            <p class="leading-relaxed">
+              Yes, you need a free Google Gemini API key. This is Google's AI service that powers the extension. You can get a free API key at https://aistudio.google.com/apikey with no credit card required!
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 6 -->
+        <details class="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-purple-300 transition-all duration-300 hover:shadow-lg has-[:checked]:border-purple-500 has-[:checked]:shadow-lg">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+            <span class="font-bold text-lg text-gray-900">What are Premium features?</span>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-600 group-open:bg-purple-600 group-open:text-white transition-all">→</span>
+          </summary>
+          <div class="px-6 pb-6 pt-2 text-gray-700 border-t border-gray-100">
+            <p class="leading-relaxed">
+              Premium features include advanced analysis, the ability to save and organize notes, verse highlighting, access to commentary libraries, study plans, and priority support. You get all the free features plus these valuable extras.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 7 -->
+        <details class="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-purple-300 transition-all duration-300 hover:shadow-lg has-[:checked]:border-purple-500 has-[:checked]:shadow-lg">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+            <span class="font-bold text-lg text-gray-900">Is there a free trial for Premium?</span>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-600 group-open:bg-purple-600 group-open:text-white transition-all">→</span>
+          </summary>
+          <div class="px-6 pb-6 pt-2 text-gray-700 border-t border-gray-100">
+            <p class="leading-relaxed">
+              Yes! We offer a 14-day free trial so you can try all Premium features before committing. No credit card required to start the trial - completely risk-free!
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 8 -->
+        <details class="group bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-purple-300 transition-all duration-300 hover:shadow-lg has-[:checked]:border-purple-500 has-[:checked]:shadow-lg">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+            <span class="font-bold text-lg text-gray-900">Can I use the extension offline?</span>
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-600 group-open:bg-purple-600 group-open:text-white transition-all">→</span>
+          </summary>
+          <div class="px-6 pb-6 pt-2 text-gray-700 border-t border-gray-100">
+            <p class="leading-relaxed">
+              The extension itself works offline, but the AI analysis requires an internet connection to communicate with Google's servers. You can browse biblegateway.com offline, but AI features need internet connectivity.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-32 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-900 text-white relative overflow-hidden">
+    <!-- Animated background -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-400/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 4s;"></div>
+
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+      <!-- Main heading -->
+      <h2 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+        Ready to Transform Your <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-orange-300 to-red-300">Bible Study?</span>
+      </h2>
+
+      <!-- Subheading -->
+      <p class="text-xl text-purple-100 mb-4 max-w-2xl mx-auto">
+        Start with the free version today. All core features included. No credit card required.
+      </p>
+      <p class="text-lg text-purple-200 max-w-2xl mx-auto">
+        Try Premium features free for 14 days and see the difference it makes in your Scripture study
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+        <a href="https://chrome.google.com/webstore" target="_blank"
+           class="group relative px-10 py-5 bg-gradient-to-r from-yellow-400 to-orange-400 text-purple-900 font-bold text-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95 hover:from-yellow-300 hover:to-orange-300">
+          <span class="relative flex items-center justify-center gap-2">
+            📥 Download Free Now
+          </span>
+        </a>
+        <a href="/pricing"
+           class="group px-10 py-5 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-bold text-lg rounded-xl hover:bg-white/20 hover:border-white/60 transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95">
+          <span class="flex items-center justify-center gap-2">
+            🌟 View Pricing
+          </span>
+        </a>
+      </div>
+
+      <!-- Trust indicators -->
+      <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">⚡</span>
+          <span class="text-purple-200">1-minute setup</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">🔓</span>
+          <span class="text-purple-200">No credit card</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">📊</span>
+          <span class="text-purple-200">Used by 10K+</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

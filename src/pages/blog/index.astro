@@ -1,0 +1,163 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Section from '../../components/ui/Section.astro';
+import Badge from '../../components/ui/Badge.astro';
+import Grid from '../../components/ui/Grid.astro';
+import CTA from '../../components/ui/CTA.astro';
+
+const pageTitle = 'Blog - Bible Study Hub';
+const pageDescription = 'Read articles and guides about Bible study, theology, and spiritual growth.';
+
+// Mock blog posts - in production, these would come from your content collection
+const blogPosts = [
+  {
+    slug: 'how-to-study-bible-effectively',
+    title: 'How to Study the Bible Effectively',
+    description: 'Learn proven methods and techniques for deeper Scripture engagement and understanding.',
+    author: 'John Smith',
+    date: new Date('2026-07-01'),
+    category: 'Study Tips',
+    image: '📚',
+    excerpt: 'Bible study is more than just reading passages. It requires intention, method, and engagement. In this guide, we explore...',
+  },
+  {
+    slug: 'understanding-historical-context',
+    title: 'Understanding Biblical Historical Context',
+    description: 'Discover how historical background enriches your understanding of Scripture.',
+    author: 'Sarah Johnson',
+    date: new Date('2026-06-28'),
+    category: 'Theology',
+    image: '⏰',
+    excerpt: 'The Bible was written in specific historical contexts that shaped its language, metaphors, and meaning. Understanding...',
+  },
+  {
+    slug: 'hermeneutics-basics',
+    title: 'Hermeneutics: The Art of Bible Interpretation',
+    description: 'Master the principles of biblical interpretation and exegesis.',
+    author: 'Michael Chen',
+    date: new Date('2026-06-20'),
+    category: 'Interpretation',
+    image: '🔍',
+    excerpt: 'Hermeneutics is the science and art of interpretation. Learn the fundamental principles that help us understand...',
+  },
+  {
+    slug: 'prayer-bible-study',
+    title: 'Combining Prayer with Bible Study',
+    description: 'Integrate prayer into your study practice for deeper spiritual transformation.',
+    author: 'John Smith',
+    date: new Date('2026-06-15'),
+    category: 'Spiritual Growth',
+    image: '🙏',
+    excerpt: 'Bible study is not just an intellectual exercise—it is a spiritual practice. When combined with prayer...',
+  },
+];
+
+const categories = ['All', 'Study Tips', 'Theology', 'Interpretation', 'Spiritual Growth'];
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <Section class="bg-gradient-to-b from-purple-50 to-white">
+    <div class="text-center max-w-3xl mx-auto">
+      <Badge variant="primary" icon="📝">Bible Study Blog</Badge>
+
+      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mt-6 mb-4">
+        Articles & Insights
+      </h1>
+
+      <p class="text-xl text-gray-600">
+        Read articles about Bible study methods, theology, spiritual growth, and scriptural insights.
+      </p>
+    </div>
+  </Section>
+
+  <!-- Category Filter -->
+  <Section>
+    <div class="flex flex-wrap gap-3 justify-center mb-12">
+      {categories.map((cat) => (
+        <button
+          class={`px-6 py-2 rounded-full font-semibold transition ${
+            cat === 'All'
+              ? 'bg-purple-600 text-white'
+              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+          }`}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Blog Posts Grid -->
+  <Section>
+    <Grid cols={2}>
+      {blogPosts.map((post) => (
+        <a
+          href={`/blog/${post.slug}`}
+          class="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl hover:border-purple-200 transition-all duration-300 hover:-translate-y-2"
+        >
+          <div class="h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center text-6xl">
+            {post.image}
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-sm font-semibold text-purple-600">{post.category}</span>
+              <span class="text-sm text-gray-400">
+                {post.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+              </span>
+            </div>
+
+            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">
+              {post.title}
+            </h3>
+
+            <p class="text-gray-600 mb-4">
+              {post.excerpt}
+            </p>
+
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-500">By {post.author}</span>
+              <span class="text-purple-600 group-hover:translate-x-2 transition">→</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- Newsletter -->
+  <Section class="bg-purple-50">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        Subscribe to Our Newsletter
+      </h2>
+      <p class="text-gray-600 mb-6">
+        Get new articles, study tips, and biblical insights delivered to your inbox weekly.
+      </p>
+
+      <form class="flex flex-col sm:flex-row gap-4">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          required
+          class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-purple-600"
+        />
+        <button
+          type="submit"
+          class="px-8 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <CTA
+    title="Start Your Bible Study Journey"
+    description="Combine these insights with AI-powered study tools for maximum spiritual growth."
+    primaryCTA={{ text: 'Download Extension', href: 'https://chrome.google.com/webstore' }}
+    secondaryCTA={{ text: 'View Pricing', href: '/pricing' }}
+  />
+</MainLayout>

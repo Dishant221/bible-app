@@ -1,0 +1,40 @@
+---
+import Button from './Button.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  primaryCTA: {
+    text: string;
+    href: string;
+  };
+  secondaryCTA?: {
+    text: string;
+    href: string;
+  };
+  class?: string;
+}
+
+const { title, description, primaryCTA, secondaryCTA, class: className } = Astro.props;
+---
+
+<section class={`bg-gradient-to-r from-purple-600 to-purple-700 rounded-3xl p-12 md:p-16 text-white text-center ${className || ''}`}>
+  <h2 class="text-4xl md:text-5xl font-black mb-4">
+    {title}
+  </h2>
+
+  <p class="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
+    {description}
+  </p>
+
+  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <Button href={primaryCTA.href} variant="secondary" size="lg">
+      {primaryCTA.text}
+    </Button>
+    {secondaryCTA && (
+      <Button href={secondaryCTA.href} variant="outline" size="lg" class="border-white/30 text-white hover:bg-white/10">
+        {secondaryCTA.text}
+      </Button>
+    )}
+  </div>
+</section>
