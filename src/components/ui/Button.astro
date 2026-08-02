@@ -37,20 +37,16 @@ const sizes = {
 
 const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className || ''}`;
 
-const content = (
-  <>
-    {icon && <span class="mr-2">{icon}</span>}
-    <slot />
-  </>
-);
 ---
 
 {href ? (
   <a href={href} class={classes} target={target} rel={rel} {...rest}>
-    {content}
+    {icon && <span class="mr-2">{icon}</span>}
+    <slot />
   </a>
 ) : (
   <button class={classes} {...rest}>
-    {content}
+    {icon && <span class="mr-2">{icon}</span>}
+    <slot />
   </button>
 )}
